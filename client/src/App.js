@@ -9,7 +9,7 @@ const App = () => {
   const [taskName, setTaskName] = useState('');
 
   useEffect(() => {
-    const socket = io(`${API_URL}`, { transports: ['websocket'] });
+    const socket = io(API_URL, { transports: ['websocket'] });
     setSocket(socket);
     socket.on('removeTask', id => removeTask(id));
     socket.on('addTask', task => addTask(task));
