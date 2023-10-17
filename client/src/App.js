@@ -1,7 +1,7 @@
 import io from 'socket.io-client';
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { API_URL } from '../config';
+import { API_URL } from './config';
 
 const App = () => {
   const [socket, setSocket] = useState();
