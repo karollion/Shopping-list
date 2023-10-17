@@ -7,10 +7,10 @@ const socket = require('socket.io');
 const app = express();
 
 // middleware to share files in client folder
-app.use(express.static(path.join(__dirname, '/client')))
+app.use(express.static(path.join(__dirname, '/client/build')))
 // return client application
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/client/index.html'));
+  res.sendFile(path.join(__dirname, '/client/build/index.html'));
 });
 
 const server = app.listen(process.env.PORT || 3030, () => {
