@@ -1,6 +1,7 @@
 import io from 'socket.io-client';
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { API_URL } from '../config';
 
 const App = () => {
   const [socket, setSocket] = useState();
@@ -8,7 +9,7 @@ const App = () => {
   const [taskName, setTaskName] = useState('');
 
   useEffect(() => {
-    const socket = io('ws://localhost:3030', { transports: ['websocket'] });
+    const socket = io(`${API_URL}`, { transports: ['websocket'] });
     setSocket(socket);
     socket.on('removeTask', id => removeTask(id));
     socket.on('addTask', task => addTask(task));
@@ -46,11 +47,11 @@ const App = () => {
     <div className="App">
   
       <header>
-        <h1>To Do List</h1>
+        <h1>Shopping List</h1>
       </header>
   
       <section className="tasks-section" id="tasks-section">
-        <h2>Tasks</h2>
+        <h2>Products</h2>
   
         <ul className="tasks-section__list" id="tasks-list">
           {tasks.map(task => (
